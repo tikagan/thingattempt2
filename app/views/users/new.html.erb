@@ -1,0 +1,44 @@
+<% if current_user %>
+  <p>logged in</p>
+  <%= link_to 'Log Out', session_path('current'), :method => :delete%>
+<% else %>
+  <p>Sign up!</p>
+
+  <%= form_for @user do |f| %>
+
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </p>
+
+    <p>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </p>
+
+    <p>
+      <%= f.label :role %><br>
+      <%= f.text_field :role %>
+    </p>
+
+    <p>
+      <%= f.label :company_name %><br>
+      <%= f.text_field :company_name %>
+    </p>
+
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+
+<% end %>

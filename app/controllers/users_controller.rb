@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  autocomplete :user, :email
+  #autocomplete :user, :email
   
   def show
     @user = User.find(params[:user_id])

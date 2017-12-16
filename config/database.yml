@@ -85,3 +85,5 @@ production:
   database: fintros_production
   username: fintros
   password: <%= ENV['FINTROS_DATABASE_PASSWORD'] %>
+  adapter:postgresql
+  host:localhost

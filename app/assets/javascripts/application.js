@@ -20,11 +20,3 @@
 //= require_tree .
 //= require foundation
 
-$(document).on('turbolinks:load', function() {
-
-  $("#email").emailautocomplete({
-
-    domains: ["fintros.com"] //additional domains (optional)
-  });
-
-});

@@ -12,8 +12,19 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require jquery.email-autocomplete
+//= require jquery-autocomplete
+//= require autocomplete-rails
 //= require_tree .
 //= require foundation
-$(document).foundation();
 
-$(function(){ $(document).foundation(); });
+$(document).on('turbolinks:load', function() {
+
+  $("#email").emailautocomplete({
+
+    domains: ["fintros.com"] //additional domains (optional)
+  });
+
+});

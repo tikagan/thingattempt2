@@ -1,33 +1,39 @@
 class UsersController < ApplicationController
-  #autocomplete :user, :email
-  
-  def show
-    @user = User.find(params[:user_id])
-  end
+  before_action :clearbit_auth, only: [:get_user_info]
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     if @user.save
-        session[:user_id] = @user.id
-        redirect_to root_path
+      session[:user_id] = @user.id
+      redirect_to '/'
     else
-      render :new 
+      render :new
     end
   end
 
-  private
-  
+  def get_user_info
+    email =  params[:email] + '.' + params[:format]
+    response = Clearbit::Enrichment.find(email:  email, stream: true)
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :role, :company_name, :password)
+    if response == nil
+      render body: nil, :status => :not_found
+    else
+      render :json => response
     end
+  end
+
+private
+
+  def user_params
+    params.require(:user).permit(:email, :full_name,:phone_number, :company_size, :company_name, :password)
+  end
+
+  def clearbit_auth
+    Clearbit.key = ENV['CBIT_API']
+  end
+
 end

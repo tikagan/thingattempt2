@@ -1,44 +1,81 @@
 <% if current_user %>
-  <p>logged in</p>
-  <%= link_to 'Log Out', session_path('current'), :method => :delete%>
+  <div class="loggedin">
+    <p>Currently logged in as <%= current_user.full_name %></p>
+    <%= link_to 'Log Out', session_path('current'), :method => :delete%>
+  </div>
 <% else %>
-  <p>Sign up!</p>
+  <div class="title">
+      <p>Give it a try</p>
+  </div>
 
-  <%= form_for @user do |f| %>
+<div class="form_container">
 
-    <p>
-      <%= f.label :email %><br>
-      <%= f.text_field :email, :id => 'email'%>
-    </p>
 
-    <p>
-      <%= f.label :first_name %><br>
-      <%= f.text_field :first_name, :id => 'first_name' %>
-    </p>
+  <div class="form">
+    <%= form_for @user do |f| %>
 
-    <p>
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name, :id => 'last_name' %>
-    </p>
+      <div class="row">
+        <div class="large-4 columns"> 
+          <%= f.text_field :email, :id => 'email', :value => 'Try an email..'%>
+        
+        </div>
+      </div>
+      <p class= "query_text hide"> Querying ClearBit..</p>
+      <div class="hiddenfields hide">
 
-    <p>
-      <%= f.label :role %><br>
-      <%= f.text_field :role %>
-    </p>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :name %>
+            <%= f.text_field :full_name, :id => 'full_name' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :company_name %><br>
-      <%= f.text_field :company_name %>
-    </p>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :company_name %>
+            <%= f.text_field :company_name, :id => 'company_name' %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </p>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :company_size %>
+            <%= f.text_field :company_size %>
+          </div>
+        </div>
 
-    <p>
-      <%= f.submit %>
-    </p>
-  <% end %>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
+        </div>
+
+          <%= f.submit(:class => "button round") %>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>
+
+<div class= "scrape_container">
+  <%= form_tag scrape_info_url, method: "get", id: "scrape_form" do %>
+    <%= submit_tag("Scrape 500 Users from Meetup", class: "button round") %>
+    <% end %>
+    <%= image_tag("/pageloader.gif", class: "loading_icon hide", height: '40', width: '40') %>
+</div>
+
+<ul id= 'userlist'>
+
+  </ul>
 
 <% end %>

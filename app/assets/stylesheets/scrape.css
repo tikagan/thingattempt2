@@ -1,0 +1,21 @@
+.scrape_container {
+  width: 100%;
+}
+.scrape_form {
+  margin-left:4em;
+}
+
+.loading_icon {
+  position: relative;
+  top: -52px;
+  left: 59%;
+}
+
+.loading_icon.hide {
+  display: none;
+}
+
+#userlist {
+	list-style-type: decimal;
+	margin-left: 29%;
+}

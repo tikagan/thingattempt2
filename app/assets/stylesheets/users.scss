@@ -1,3 +1,80 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: rgb(232, 232, 232);
+}
+
+.title {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: 600;
+  
+
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  p {
+    margin-bottom: 1.7rem;
+  }
+}
+
+.form_container {
+  width: 47%;
+  margin: 30px auto;
+  background: url('http://images.all-free-download.com/images/graphiclarge/abstract_blue_background_vector_graphic_art_569556.jpg');
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(43, 120, 185);
+  border-radius: 10px;
+  color:#e6e6e6;
+}
+
+
+
+
+.row {
+  margin-bottom: 27px;
+  input {
+    border-radius: 6px;
+  }
+
+  label {
+    margin-bottom: 8px;
+    color: rgb(34, 98, 152);
+    font-weight: 500;
+  }
+}
+.eac-sugg {
+  color: gray;
+}
+
+.hiddenfields.hide {
+  display: none;
+}
+
+.button {
+  display: block;
+  margin: 0px auto 12px;
+  margin-left:4em;
+}
+
+
+.loggedin {
+  text-align: center;
+  p {
+    font-size: 40px;
+    font-weight: 700px;
+  }
+}
+
+.query_text {
+	position: relative;
+	bottom: 99px;
+	left:45px;
+
+}
+.query_text.hide {
+	display:none;
+}
